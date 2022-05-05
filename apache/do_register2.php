@@ -1,13 +1,14 @@
-
+//do_register
 
 <?php
 	$db = mysqli_connect('localhost','root','1234','BuscarComidas') or die ('Fail');
+?>
 
-
+<?php
 	session_start();
-	$user_posted = 'NULL';
+	$user_id_a_insertar = 'NULL';
 	if (!empty($_SESSION['id_usuario'])){
-		$user_posted = $_SESSION['id_usuario'];
+		$user_id_a_insertar = $_SESSION['id_usuario'];
 	}
 
 	$user_posted = $_POST['name'];
