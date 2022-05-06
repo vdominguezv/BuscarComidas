@@ -9,19 +9,23 @@
 	$user_posted = $_POST['name'];
 	$email_posted = $_POST['email'];
 	$password_posted = $_POST['password'];
+	$rpassword_posted = $_POST['rpassword'];
 
-
-	$total = $mysqli_connect->query("SELECT * FROM tUsuario WHERE nombre = '.$user_posted.'");
-	if (mysql_num_rows($total) != 0){
+	$passhas = password_hash($password_posted, PASSWORD_DEFAULT);
+	$total = ("SELECT * FROM tUsuario WHERE nombre = '".$user_posted."'");
+	$result = mysqli_query($db, $total) or die('error');
+	if (mysqli_num_rows($result) > 0){
 	echo "<p>Este usuario ya existe</p>";
+}elseif ($password_posted != $rpassword_posted){
+	echo "<p>Las contraseñas deben ser iguales</p>";
 }else{
-	$query = "INSERT INTO tUsuario(nombre,email,contrasena) VALUES ('".$user_posted."','".$email_posted."','".$password_posted."')";
+	$query = "INSERT INTO tUsuario(nombre,email,contrasena) VALUES ('".$user_posted."','".$email_posted."','".$passhas."')";
 
 	mysqli_query($db, $query) or die('Error');
-
-	echo "<p>Usuario ";
-	echo mysql_insert_id($db);
-	echo " creado</p>";
+	
+	echo "<p>Usuario creado</p>";
+	
+	header('Location: login.html');
 }
 
 
