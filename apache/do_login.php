@@ -17,7 +17,7 @@ $result = mysqli_query($db, $query) or die('Query error');
 		if (password_verify($password_posted, $only_row[1])){
 			echo '<p>Autentificación satisfactoria</p>';
 			$_SESSION["id_usuario"] = $password_posted;
-			header('Location: main.php');
+			header('Location: main.html');
 		}else{
 			echo '<p>Contraseña incorrecta</p>';
 		}
