@@ -1,0 +1,16 @@
+div.menu1{
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color:blue;
+	text-align: center;
+}
+.menu1 a{
+	float: left;
+	padding: 0;
+	overflow: hidden;
+	background-color: blue;
+	color: white;
+	padding: 10px;
+	text-decorarion: underline;
+}
