@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <?php
 	$db =mysqli_connect('localhost','root','1234','BuscarComidas') or die('Fail');
 ?>
@@ -8,8 +10,16 @@
 	</head>
 	<body>
 		<div class="menu1">
-			<a href="login.html" class="activa">Login</a>
-			<a href="main.html">Main</a>
+			<?php
+			If (isset($_SESSION['id_usuario'])) {
+				echo '<div id="activo"><p>Estás LOGUEADO</p></div>';
+				echo '<a href="logout.php">Cerrar sesión</a>';
+			} else {
+				echo '<a href="login.html">Iniciar sesión</a>';
+			};
+			
+			?>
+			<a href="main.php">Main</a>
 		</div>
 		<br>
 		<?php
@@ -17,13 +27,20 @@
 		$nombre_res = $_GET['nombre'];
 
 		echo $nombre_res;
+		echo "<hr/>";
 
-		/*$query = "SELECT nombre, descripcion, ubicacion FROM tRestaurantes WHERE nombre = '".$nombre_res."'";
-
+		$query = "SELECT nombre, descripcion, ubicacion FROM tRestaurante WHERE nombre = '".$nombre_res."'";
+		
 		$result = mysqli_query($db, $query) or die('Query error');
-		$only_row = (mysqli_num_rows($result) > 0){
-			
-		}*/
+		$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+		$only_row = (mysqli_num_rows($result));
+		if ($only_row > 0){
+			 echo "Nombre: ".$row['nombre']."<br/>";
+			 echo "Descripcion: ".$row['descripcion']."<br/>";
+			 echo "Ubicación: ".$row['ubicacion'];
+		}else{
+			echo "No se encontraron resultados";
+		}
 ?>
 	</body>
 </html>

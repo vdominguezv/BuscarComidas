@@ -1,10 +1,6 @@
-//login
-
-
+<?php session_start(); ?>
 <?php
 $db = mysqli_connect('localhost', 'root', '1234', 'BuscarComidas') or die('Fail');
-
-session_start();
 
 $user_posted = $_POST['nombre'];
 $password_posted = $_POST['password'];
@@ -16,13 +12,15 @@ $result = mysqli_query($db, $query) or die('Query error');
 		$only_row = mysqli_fetch_array($result);
 		if (password_verify($password_posted, $only_row[1])){
 			echo '<p>Autentificación satisfactoria</p>';
-			$_SESSION["id_usuario"] = $password_posted;
-			header('Location: main.html');
+			$_SESSION["id_usuario"] = $only_row['id_usuario'];
+			header('Location: main.php');
 		}else{
 			echo '<p>Contraseña incorrecta</p>';
+			echo '<a href="login.html">Regresar</a>';
 		}
 	}else{
 		echo '<p>Usuario no encontrado con ese nombre</p>';
-}
+		echo '<a href="login.html">Regresar</a>';
+};
 ?>
 
