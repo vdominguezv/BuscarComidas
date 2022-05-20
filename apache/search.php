@@ -14,9 +14,16 @@
 		<br>
 		<?php
 
-		$nombre_res = $_GET['nombre']
+		$nombre_res = $_GET['nombre'];
 
-		echo $nombre_res
+		echo $nombre_res;
+
+		/*$query = "SELECT nombre, descripcion, ubicacion FROM tRestaurantes WHERE nombre = '".$nombre_res."'";
+
+		$result = mysqli_query($db, $query) or die('Query error');
+		$only_row = (mysqli_num_rows($result) > 0){
+			
+		}*/
 ?>
 	</body>
 </html>
