@@ -24,20 +24,24 @@
 		<br>
 		<?php
 
-		$nombre_res = $_GET['nombre'];
+		$ubicacion_res = $_GET['ubicacion'];
 
-		echo $nombre_res;
+		echo $ubicacion_res;
 		echo "<hr/>";
 
-		$query = "SELECT nombre, descripcion, ubicacion FROM tRestaurante WHERE nombre = '".$nombre_res."'";
+		$query = "SELECT nombre, descripcion, ubicacion FROM tRestaurante WHERE ubicacion LIKE '%".$ubicacion_res."%'";
 		
 		$result = mysqli_query($db, $query) or die('Query error');
-		$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 		$only_row = (mysqli_num_rows($result));
 		if ($only_row > 0){
+			while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+
 			 echo "Nombre: ".$row['nombre']."<br/>";
 			 echo "Descripcion: ".$row['descripcion']."<br/>";
-			 echo "Ubicación: ".$row['ubicacion'];
+			 echo "Ubicación: ".$row['ubicacion']."<br/>"."<br/>";
+			
+			
+		};
 		}else{
 			echo "No se encontraron resultados";
 		}

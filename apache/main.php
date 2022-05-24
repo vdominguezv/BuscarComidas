@@ -21,8 +21,8 @@
 		</div>
 
 		<form method="GET" action="search.php">
-		<label for="nombre">Texto de búsqueda:</label><br>
-		<input type="text" id="nombre" name="nombre"><br>
+		<label for="ubicacion">Texto de búsqueda (escribe una zona. Por ejemplo A Coruña):</label><br>
+		<input type="text" id="ubicacion" name="ubicacion"><br>
 		<input type="submit"><br>
 		</form>
 	</body>
