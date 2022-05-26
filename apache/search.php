@@ -29,7 +29,7 @@
 		echo $ubicacion_res;
 		echo "<hr/>";
 
-		$query = "SELECT nombre, descripcion, ubicacion FROM tRestaurante WHERE ubicacion LIKE '%".$ubicacion_res."%'";
+		$query = "SELECT nombre, descripcion, ubicacion, mapa FROM tRestaurante WHERE ubicacion LIKE '%".$ubicacion_res."%'";
 		
 		$result = mysqli_query($db, $query) or die('Query error');
 		$only_row = (mysqli_num_rows($result));
@@ -39,12 +39,13 @@
 			 echo "Nombre: ".$row['nombre']."<br/>";
 			 echo "Descripcion: ".$row['descripcion']."<br/>";
 			 echo "Ubicación: ".$row['ubicacion']."<br/>"."<br/>";
-			
+			 echo $row['mapa']."<br/>";
 			
 		};
 		}else{
 			echo "No se encontraron resultados";
 		}
+		echo '<a href="main.php">Volver a página principal</a>';
 ?>
 	</body>
 </html>
