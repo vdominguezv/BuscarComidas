@@ -5,7 +5,7 @@ $db = mysqli_connect('localhost', 'root', '1234', 'BuscarComidas') or die('Fail'
 $user_posted = $_POST['nombre'];
 $password_posted = $_POST['password'];
 
-$query = "SELECT id_usuario, contrasena FROM tUsuario WHERE nombre = '".$user_posted."'";
+$query = "SELECT id_usuario, contrasena FROM tusuario WHERE nombre = '".$user_posted."'";
 $result = mysqli_query($db, $query) or die('Query error');
 
 	if (mysqli_num_rows($result) > 0){

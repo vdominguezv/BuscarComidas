@@ -19,7 +19,7 @@
 }elseif ($password_posted != $rpassword_posted){
 	echo "<p>Las contraseñas deben ser iguales</p>";
 }else{
-	$query = "INSERT INTO tUsuario(nombre,email,contrasena) VALUES ('".$user_posted."','".$email_posted."','".$passhas."')";
+	$query = "INSERT INTO tusuario(nombre,email,contrasena) VALUES ('".$user_posted."','".$email_posted."','".$passhas."')";
 
 	mysqli_query($db, $query) or die('Error');
 	
