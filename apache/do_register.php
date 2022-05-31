@@ -12,7 +12,7 @@
 	$rpassword_posted = $_POST['rpassword'];
 
 	$passhas = password_hash($password_posted, PASSWORD_DEFAULT);
-	$total = ("SELECT * FROM tUsuario WHERE nombre = '".$user_posted."'");
+	$total = ("SELECT * FROM tusuario WHERE nombre = '".$user_posted."'");
 	$result = mysqli_query($db, $total) or die('error');
 	if (mysqli_num_rows($result) > 0){
 	echo "<p>Este usuario ya existe</p>";

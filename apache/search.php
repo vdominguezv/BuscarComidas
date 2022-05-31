@@ -29,7 +29,7 @@
 		echo $ubicacion_res;
 		echo "<hr/>";
 
-		$query = "SELECT nombre, descripcion, ubicacion, mapa FROM trestaurante WHERE ubicacion LIKE '%".$ubicacion_res."%'";
+		$query = "SELECT id_restaurante, nombre, descripcion, ubicacion, mapa FROM trestaurante WHERE ubicacion  LIKE '%".$ubicacion_res."%' OR nombre LIKE '%".$ubicacion_res."%' OR descripcion LIKE '%".$ubicacion_res."%'";
 		
 		$result = mysqli_query($db, $query) or die('Query error');
 		$only_row = (mysqli_num_rows($result));
@@ -40,6 +40,10 @@
 			 echo "Descripcion: ".$row['descripcion']."<br/>";
 			 echo "Ubicación: ".$row['ubicacion']."<br/>"."<br/>";
 			 echo $row['mapa']."<br/>";
+			 echo "<form method='post' action='do_add_favorite.php'>";
+			 echo "<input type='hidden' name='id_restaurante' value='".$row['id_restaurante']."'>";
+			 echo "<input type='submit'>";
+			 echo "</form>";
 			
 		};
 		}else{
