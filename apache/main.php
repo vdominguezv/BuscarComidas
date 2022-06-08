@@ -6,7 +6,7 @@
 	</head>
 
 	<body>
-	
+		
 		<div class="menu1">
 			<?php
 			If (isset($_SESSION['id_usuario'])) {
@@ -25,5 +25,6 @@
 		<input type="text" id="ubicacion" name="ubicacion"><br>
 		<input type="submit"><br>
 		</form>
+		<a href="favoritos.php">Ir a favoritos</a>
 	</body>
 </html>

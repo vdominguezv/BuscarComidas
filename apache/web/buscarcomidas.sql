@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-05-2022 a las 17:43:25
+-- Tiempo de generación: 08-06-2022 a las 17:22:36
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -20,6 +20,29 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `buscarcomidas`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tfavorito`
+--
+
+CREATE TABLE `tfavorito` (
+  `id_favorito` int(11) NOT NULL,
+  `restaurante_id` int(11) DEFAULT NULL,
+  `usuario_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `tfavorito`
+--
+
+INSERT INTO `tfavorito` (`id_favorito`, `restaurante_id`, `usuario_id`) VALUES
+(1, 1, 1),
+(2, 4, 1),
+(3, 1, 2),
+(4, 10, 2),
+(5, 9, 2);
 
 -- --------------------------------------------------------
 
@@ -71,18 +94,8 @@ CREATE TABLE `tusuario` (
 --
 
 INSERT INTO `tusuario` (`id_usuario`, `nombre`, `email`, `contrasena`) VALUES
-(1, 'prueba', 'prueba', '$2y$10$G3dByOMf5bqbBEUcqD/RM.YtN4TvvVdN8DU0VySO5enCRX8cttlXy');
-
-
---
--- Estructura de tabla para la tabla `tfavorito`
---
-
-CREATE TABLE `tfavorito` (
-  `id_favorito` int(11) NOT NULL,
-  `restaurante_id` int(11) DEFAULT NULL,
-  `usuario_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+(1, 'prueba', 'prueba', '$2y$10$G3dByOMf5bqbBEUcqD/RM.YtN4TvvVdN8DU0VySO5enCRX8cttlXy'),
+(2, 'prueba2', 'prueba2', '$2y$10$l.GbJmI5bqYyPjeYFa52Beow7.tM3nkZO1xvRAGoCKVhHBmLho/li');
 
 --
 -- Índices para tablas volcadas
@@ -116,7 +129,7 @@ ALTER TABLE `tusuario`
 -- AUTO_INCREMENT de la tabla `tfavorito`
 --
 ALTER TABLE `tfavorito`
-  MODIFY `id_favorito` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_favorito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `trestaurante`
@@ -128,7 +141,7 @@ ALTER TABLE `trestaurante`
 -- AUTO_INCREMENT de la tabla `tusuario`
 --
 ALTER TABLE `tusuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas
